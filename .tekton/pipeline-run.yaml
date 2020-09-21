@@ -1,0 +1,21 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineRun
+metadata:
+  name: application-pipeline-run
+spec:
+  pipelineRef:
+    name: application-pipeline
+  resources:
+    - name: git-source
+      resourceRef:
+        name: git
+  params:
+    - name: pathToContext
+      value: "."
+    - name: pathToYamlFile
+      value: "deploy.yaml"
+    - name: "imageUrl"
+      value: "index.docker.io/dewandemo/j4kio-java-tekton"
+    - name: "imageTag"
+      value: "0.0.1"
+  serviceAccountName: service-account
