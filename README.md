@@ -125,4 +125,4 @@ tkn pr logs <name-of-pipelinerun>
   
 3. Log on to your docker registry and you should be seeing a recently pushed image for a Java application.
 
-If you've enjoyed this demo and/or if you have any question, please [drop me a note](www.dewanahmed.com).
+If you've enjoyed this demo and/or if you have any question, please [drop me a note](https://www.dewanahmed.com).
