@@ -55,7 +55,9 @@ kubectl apply -f task-build-src.yaml
 kubectl apply -f task-deploy.yaml
 ```
 
+```
 kubectl apply -f https://raw.githubusercontent.com/tektoncd/catalog/master/task/send-to-webhook-slack/0.1/send-to-webhook-slack.yaml
+```
 
 5. Create the Tekton pipeline:
 
