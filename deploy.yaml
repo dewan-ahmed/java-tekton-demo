@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app
+  labels:
+    app: app
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      name: app
+      nodePort: 32000
+  selector:
+    app: app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  labels:
+    app: app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: app
+        # Because kube-registry-proxy is present localhost access is via http instead of https
+        # For Katacoda image: localhost:5000/app:0.0.1
+        # For OpenShift --> 
+        image: index.docker.io/dewandemo/j4kio-java-tekton:0.0.1
+        ports:
+        - containerPort: 8080
+
+#---
+#apiVersion: route.openshift.io/v1
+#kind: Route
+#metadata:
+#  name: app
+#spec:
+#  host: <insert openshift cluster address>
+#  to:
+#    kind: Service
+#    name: app
